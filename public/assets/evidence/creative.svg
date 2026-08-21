@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1000">
+  <defs><filter id="n"><feTurbulence baseFrequency=".76" numOctaves="4"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .14"/></feComponentTransfer></filter></defs>
+  <rect width="600" height="1000" fill="#0a0a0a"/>
+  <circle cx="214" cy="350" r="145" fill="#bcbcbc"/><rect x="300" y="223" width="198" height="318" fill="#5f5f5f"/><path d="M89 623H509V818H89Z" fill="#d6d6d6" fill-opacity=".13" stroke="#ddd" stroke-opacity=".22"/>
+  <text x="80" y="712" fill="#e6e6e6" font-family="Georgia,serif" font-size="94" font-weight="700">Aa</text><text x="260" y="713" fill="#c0c0c0" font-family="Arial,sans-serif" font-size="24" letter-spacing="7">BRAND SYSTEM</text>
+  <text x="62" y="132" fill="#eee" font-family="Georgia,serif" font-size="58" font-weight="700">CREATIVE</text><text x="64" y="170" fill="#aaa" font-family="monospace" font-size="16" letter-spacing="4">GRAPHIC DESIGN / BRAND</text>
+  <rect width="600" height="1000" filter="url(#n)" opacity=".45"/>
+</svg>

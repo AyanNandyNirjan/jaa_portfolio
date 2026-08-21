@@ -1,0 +1,450 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --red: #ff2a2a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  scroll-behavior: auto;
+  background: #f1eee6;
+}
+
+html.dark {
+  background: #050505;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: inherit;
+}
+
+body,
+a,
+button {
+  cursor: auto;
+}
+
+@media (pointer: fine) {
+  body,
+  a,
+  button {
+    cursor: none;
+  }
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 4px;
+}
+
+::selection {
+  background: var(--red);
+  color: white;
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(0,0,0,.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,.1) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.dark .hero-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+}
+
+.hero-shell {
+  --mx: 50%;
+  --my: 42%;
+}
+
+.hero-flashlight {
+  background: radial-gradient(circle 260px at var(--mx) var(--my), rgba(255,42,42,.13), transparent 66%);
+  mix-blend-mode: multiply;
+}
+
+.dark .hero-flashlight {
+  background: radial-gradient(circle 280px at var(--mx) var(--my), rgba(255,42,42,.2), transparent 66%);
+  mix-blend-mode: screen;
+}
+
+.scanline {
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(255,255,255,.025) 0,
+    rgba(255,255,255,.025) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+}
+
+.cursor-dot {
+  width: 5px;
+  height: 5px;
+  margin-left: -2.5px;
+  margin-top: -2.5px;
+  border-radius: 999px;
+  background: #ff2a2a;
+  box-shadow: 0 0 18px rgba(255,42,42,.8);
+}
+
+.cursor-ring {
+  width: 34px;
+  height: 34px;
+  margin-left: -17px;
+  margin-top: -17px;
+  border: 1px solid rgba(255,42,42,.75);
+  border-radius: 999px;
+  transition: width .22s ease, height .22s ease, margin .22s ease, background .22s ease;
+}
+
+.cursor-ring::before,
+.cursor-ring::after {
+  content: '';
+  position: absolute;
+  background: rgba(255,42,42,.55);
+}
+
+.cursor-ring::before {
+  left: 50%;
+  top: -7px;
+  width: 1px;
+  height: 48px;
+}
+
+.cursor-ring::after {
+  top: 50%;
+  left: -7px;
+  width: 48px;
+  height: 1px;
+}
+
+.cursor-ring--active {
+  width: 52px;
+  height: 52px;
+  margin-left: -26px;
+  margin-top: -26px;
+  background: rgba(255,42,42,.08);
+}
+
+@layer components {
+  .hud-icon {
+    @apply grid size-9 place-items-center border border-black/15 text-black/60 transition duration-200 hover:border-[#ff2a2a] hover:bg-[#ff2a2a] hover:text-white dark:border-white/15 dark:text-white/60;
+  }
+
+  .hud-link {
+    @apply relative py-2 transition-colors duration-200 hover:text-[#ff2a2a] dark:hover:text-[#ff2a2a];
+  }
+
+  .hud-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 h-px w-0 bg-[#ff2a2a] transition-all duration-300;
+  }
+
+  .hud-link:hover::after {
+    width: 100%;
+  }
+
+  .section-kicker {
+    @apply font-mono text-[9px] uppercase tracking-[0.18em] text-[#ff2a2a] sm:text-[10px];
+  }
+
+  .mode-button {
+    @apply flex items-center gap-2 border border-black/15 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.15em] text-black/50 transition hover:border-[#ff2a2a] hover:text-[#ff2a2a] dark:border-white/15 dark:text-white/45;
+  }
+
+  .mode-button--active {
+    @apply border-[#ff2a2a] bg-[#ff2a2a] text-white hover:text-white;
+  }
+
+  .terminal-button {
+    @apply border border-black/20 px-4 py-3 font-mono text-[9px] uppercase tracking-[0.17em] transition hover:border-[#ff2a2a] hover:bg-[#ff2a2a] hover:text-white dark:border-white/20;
+  }
+
+  .tag-dark {
+    @apply border border-white/15 bg-white/[0.03] px-3 py-2 font-mono text-[9px] uppercase tracking-[0.13em] text-white/55;
+  }
+
+  .contact-node {
+    @apply flex min-h-[88px] items-center gap-3 p-4 font-mono text-[10px] uppercase tracking-[0.15em] transition hover:bg-[#111] sm:p-5;
+  }
+}
+
+.evidence-card {
+  isolation: isolate;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, .16);
+}
+
+.dark .evidence-card {
+  box-shadow: 0 22px 60px rgba(0, 0, 0, .42);
+}
+
+.evidence-card:hover .evidence-card__frame {
+  inset: 6px;
+  border-color: rgba(255, 42, 42, .72);
+}
+
+.archive-arrow {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid rgba(0, 0, 0, .18);
+  color: rgba(0, 0, 0, .48);
+  transition: border-color .2s ease, color .2s ease, background .2s ease;
+}
+
+.dark .archive-arrow {
+  border-color: rgba(255, 255, 255, .18);
+  color: rgba(255, 255, 255, .5);
+}
+
+.archive-arrow:hover {
+  border-color: var(--red);
+  background: var(--red);
+  color: #fff;
+}
+
+.case-modal {
+  animation: caseIn .35s cubic-bezier(.2,.8,.2,1) both;
+}
+
+@keyframes caseIn {
+  from { opacity: 0; transform: translateY(18px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Contact / secure-channel ending                                             */
+/* -------------------------------------------------------------------------- */
+.contact-section {
+  min-height: 100svh;
+}
+
+.contact-noise {
+  opacity: .18;
+  background-image:
+    radial-gradient(circle at 20% 85%, rgba(255, 42, 42, .12), transparent 31%),
+    radial-gradient(circle at 72% 18%, rgba(255, 42, 42, .04), transparent 24%);
+}
+
+.dark .contact-noise {
+  opacity: .72;
+  background-image:
+    radial-gradient(circle at 15% 88%, rgba(115, 25, 25, .17), transparent 28%),
+    radial-gradient(circle at 75% 24%, rgba(255, 42, 42, .025), transparent 22%);
+}
+
+.contact-vignette {
+  background: radial-gradient(circle at 50% 45%, transparent 0%, transparent 42%, rgba(0, 0, 0, .08) 100%);
+}
+
+.dark .contact-vignette {
+  background: radial-gradient(circle at 50% 45%, transparent 0%, rgba(0, 0, 0, .12) 50%, rgba(0, 0, 0, .58) 100%);
+}
+
+.contact-signal__line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 44vw;
+  min-width: 330px;
+  max-width: 780px;
+  height: 1px;
+  background: linear-gradient(90deg, #ff2a2a 0%, #ff2a2a 82%, transparent 100%);
+  box-shadow: 0 0 9px rgba(255, 42, 42, .55);
+  transform-origin: left center;
+  transform: rotate(-36deg);
+  animation: contactSignalGlow 3.4s ease-in-out infinite;
+}
+
+.contact-signal__node {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, .16);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .2), 0 0 22px rgba(255, 255, 255, .14);
+  transform: translate(-50%, -50%);
+  animation: contactNodePulse 3.4s ease-in-out infinite;
+}
+
+.contact-channel-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #ff2a2a;
+  box-shadow: 0 0 0 5px rgba(255, 42, 42, .05), 0 0 16px rgba(255, 42, 42, .72);
+  animation: contactChannelBlink 2s ease-in-out infinite;
+}
+
+.contact-initiate {
+  position: relative;
+  display: inline-flex;
+  min-width: 275px;
+  min-height: 76px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, .28);
+  padding: 1rem 3.5rem;
+  font-size: 14px;
+  line-height: 1;
+  text-transform: uppercase;
+  transition: color .3s ease, border-color .3s ease, background-color .3s ease;
+}
+
+.dark .contact-initiate {
+  border-color: rgba(255, 255, 255, .25);
+}
+
+.contact-initiate::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #ff2a2a;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform .35s cubic-bezier(.7, 0, .3, 1);
+  z-index: -1;
+}
+
+.contact-initiate:hover {
+  border-color: #ff2a2a;
+  color: #fff;
+}
+
+.contact-initiate:hover::before {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+.contact-bracket-link {
+  transition: opacity .25s ease, letter-spacing .25s ease;
+}
+
+.contact-bracket-link:hover {
+  opacity: .62;
+  letter-spacing: .12em;
+}
+
+.contact-mode-panel {
+  display: flex;
+  min-width: 220px;
+  align-items: center;
+  gap: 18px;
+  border: 1px solid rgba(255, 42, 42, .32);
+  padding: 16px 20px;
+  background: rgba(241, 238, 230, .44);
+  backdrop-filter: blur(10px);
+}
+
+.dark .contact-mode-panel {
+  background: rgba(5, 5, 5, .42);
+}
+
+.contact-cube {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  transform: rotate(30deg) skewY(-8deg);
+}
+
+.contact-cube span {
+  position: absolute;
+  inset: 5px;
+  border: 1px solid #ff2a2a;
+}
+
+.contact-cube span:nth-child(2) {
+  transform: translate(7px, -4px);
+}
+
+.contact-cube span:nth-child(3) {
+  transform: translate(13px, -8px);
+  opacity: .58;
+}
+
+@keyframes contactSignalGlow {
+  0%, 100% { opacity: .72; filter: brightness(.9); }
+  50% { opacity: 1; filter: brightness(1.35); }
+}
+
+@keyframes contactNodePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,.12), 0 0 18px rgba(255,255,255,.12); }
+  50% { box-shadow: 0 0 0 8px rgba(255,255,255,0), 0 0 28px rgba(255,255,255,.22); }
+}
+
+@keyframes contactChannelBlink {
+  0%, 100% { opacity: .55; }
+  50% { opacity: 1; }
+}
+
+@media (max-width: 767px) {
+  .contact-signal__line {
+    left: 52%;
+    width: 65vw;
+    min-width: 260px;
+    transform: rotate(-43deg);
+  }
+
+  .contact-signal__node {
+    left: 52%;
+    width: 16px;
+    height: 16px;
+  }
+
+  .contact-initiate {
+    min-width: min(100%, 285px);
+    min-height: 66px;
+    font-size: 12px;
+  }
+
+  .contact-mode-panel {
+    min-width: 190px;
+    padding: 13px 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-signal__line,
+  .contact-signal__node,
+  .contact-channel-dot {
+    animation: none;
+  }
+}

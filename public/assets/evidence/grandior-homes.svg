@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1000">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#bcbcbc"/><stop offset=".62" stop-color="#5d5d5d"/><stop offset="1" stop-color="#111"/></linearGradient>
+    <filter id="noise"><feTurbulence baseFrequency=".7" numOctaves="4"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .16"/></feComponentTransfer></filter>
+  </defs>
+  <rect width="600" height="1000" fill="url(#sky)"/>
+  <g fill="#141414"><path d="M-30 648L210 420 406 590 630 390V1000H-30Z"/><rect x="85" y="555" width="145" height="310"/><rect x="302" y="490" width="190" height="375"/></g>
+  <g fill="#c9c9c9" fill-opacity=".44"><rect x="115" y="603" width="25" height="38"/><rect x="163" y="603" width="25" height="38"/><rect x="115" y="674" width="25" height="38"/><rect x="163" y="674" width="25" height="38"/><rect x="335" y="548" width="31" height="45"/><rect x="394" y="548" width="31" height="45"/><rect x="335" y="625" width="31" height="45"/><rect x="394" y="625" width="31" height="45"/></g>
+  <path d="M75 356H525" stroke="#efefef" stroke-opacity=".35"/><path d="M75 386H425" stroke="#efefef" stroke-opacity=".18"/>
+  <text x="70" y="140" fill="#111" font-family="Georgia, serif" font-size="65" font-weight="700">GRANDIOR</text>
+  <text x="72" y="181" fill="#222" font-family="monospace" font-size="18" letter-spacing="4">SOCIAL / BRAND / HOMES</text>
+  <rect width="600" height="1000" filter="url(#noise)" opacity=".52"/>
+</svg>
