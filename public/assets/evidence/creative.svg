@@ -1,8 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1000">
-  <defs><filter id="n"><feTurbulence baseFrequency=".76" numOctaves="4"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .14"/></feComponentTransfer></filter></defs>
-  <rect width="600" height="1000" fill="#0a0a0a"/>
-  <circle cx="214" cy="350" r="145" fill="#bcbcbc"/><rect x="300" y="223" width="198" height="318" fill="#5f5f5f"/><path d="M89 623H509V818H89Z" fill="#d6d6d6" fill-opacity=".13" stroke="#ddd" stroke-opacity=".22"/>
-  <text x="80" y="712" fill="#e6e6e6" font-family="Georgia,serif" font-size="94" font-weight="700">Aa</text><text x="260" y="713" fill="#c0c0c0" font-family="Arial,sans-serif" font-size="24" letter-spacing="7">BRAND SYSTEM</text>
-  <text x="62" y="132" fill="#eee" font-family="Georgia,serif" font-size="58" font-weight="700">CREATIVE</text><text x="64" y="170" fill="#aaa" font-family="monospace" font-size="16" letter-spacing="4">GRAPHIC DESIGN / BRAND</text>
-  <rect width="600" height="1000" filter="url(#n)" opacity=".45"/>
+  <defs>
+    <linearGradient id="bg-creative" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1120"/>
+      <stop offset="60%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#030712"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="1000" fill="url(#bg-creative)"/>
+  <!-- Vibrant Bauhaus / Swiss Design Composition -->
+  <circle cx="214" cy="350" r="145" fill="#f59e0b" fill-opacity=".95"/>
+  <rect x="290" y="223" width="208" height="318" rx="8" fill="#3b82f6" fill-opacity=".95"/>
+  <circle cx="430" cy="460" r="70" fill="#ef4444" fill-opacity=".9"/>
+  <!-- Typography System Showcase -->
+  <path d="M89 623H509V818H89Z" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-opacity=".5" stroke-width="2"/>
+  <text x="120" y="730" fill="#ffffff" font-family="Georgia,serif" font-size="94" font-weight="900">Aa</text>
+  <text x="260" y="700" fill="#f59e0b" font-family="Arial,sans-serif" font-size="22" font-weight="bold" letter-spacing="6">BRAND SYSTEM</text>
+  <text x="260" y="736" fill="#94a3b8" font-family="monospace" font-size="14" letter-spacing="2">VISUAL IDENTITY / DESIGN</text>
+  <text x="62" y="132" fill="#ffffff" font-family="Georgia,serif" font-size="58" font-weight="700">CREATIVE</text>
+  <text x="64" y="170" fill="#f59e0b" font-family="monospace" font-size="16" font-weight="bold" letter-spacing="4">GRAPHIC DESIGN / BRAND</text>
 </svg>

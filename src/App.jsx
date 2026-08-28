@@ -27,7 +27,7 @@ export default function App() {
   }, [theme]);
 
   return (
-    <div className="min-h-screen bg-[#f1eee6] text-[#111] transition-colors duration-300 dark:bg-[#050505] dark:text-[#eeeae1]">
+    <div className="min-h-screen bg-[#ebe6dc] text-[#0c0c0c] transition-colors duration-300 dark:bg-[#050505] dark:text-[#f3f0e9]">
       {booting && <BootLoader onComplete={finishBoot} />}
       <SmoothScroll />
       <CustomCursor />

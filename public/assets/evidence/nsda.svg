@@ -1,10 +1,29 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1000">
-  <defs><radialGradient id="g"><stop stop-color="#d8d8d8"/><stop offset="1" stop-color="#707070"/></radialGradient><filter id="n"><feTurbulence baseFrequency=".7" numOctaves="4"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .15"/></feComponentTransfer></filter></defs>
-  <rect width="600" height="1000" fill="#c6c6c6"/>
-  <circle cx="300" cy="470" r="202" fill="none" stroke="#1c1c1c" stroke-width="7"/><circle cx="300" cy="470" r="158" fill="url(#g)" stroke="#222" stroke-width="2"/>
-  <path d="M300 328L334 416 430 421 355 480 380 574 300 521 220 574 245 480 170 421 266 416Z" fill="#111" fill-opacity=".78"/>
-  <text x="300" y="472" text-anchor="middle" fill="#ddd" font-family="Arial,sans-serif" font-size="50" font-weight="700">L3</text>
-  <path d="M225 665L178 870 300 803 422 870 375 665" fill="#222" fill-opacity=".85"/>
-  <text x="58" y="122" fill="#111" font-family="Georgia,serif" font-size="56" font-weight="700">CERTIFIED</text><text x="60" y="160" fill="#2f2f2f" font-family="monospace" font-size="16" letter-spacing="4">NSDA LEVEL-3</text>
-  <rect width="600" height="1000" filter="url(#n)" opacity=".36"/>
+  <defs>
+    <linearGradient id="bg-nsda" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#081530"/>
+      <stop offset="60%" stop-color="#0f265c"/>
+      <stop offset="100%" stop-color="#030914"/>
+    </linearGradient>
+    <radialGradient id="gold-seal">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="45%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </radialGradient>
+    <linearGradient id="ribbon-red" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#991b1b"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="1000" fill="url(#bg-nsda)"/>
+  <!-- Ribbon Ribbons -->
+  <path d="M210 590L160 880 300 800 440 880 390 590" fill="url(#ribbon-red)" stroke="#f59e0b" stroke-width="2"/>
+  <!-- Gold Medal Ring -->
+  <circle cx="300" cy="460" r="190" fill="none" stroke="#f59e0b" stroke-width="6" stroke-dasharray="10 6"/>
+  <circle cx="300" cy="460" r="165" fill="url(#gold-seal)" stroke="#78350f" stroke-width="4"/>
+  <!-- Center Star Emblem -->
+  <path d="M300 340L328 426 418 426 345 478 373 564 300 512 227 564 255 478 182 426 272 426Z" fill="#1e1b4b" stroke="#fef08a" stroke-width="3"/>
+  <text x="300" y="475" text-anchor="middle" fill="#fef08a" font-family="Arial,sans-serif" font-size="48" font-weight="900">L3</text>
+  <text x="58" y="122" fill="#ffffff" font-family="Georgia,serif" font-size="56" font-weight="700">CERTIFIED</text>
+  <text x="60" y="160" fill="#fbbf24" font-family="monospace" font-size="16" font-weight="bold" letter-spacing="4">NSDA LEVEL-3</text>
 </svg>

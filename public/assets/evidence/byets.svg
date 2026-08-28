@@ -1,15 +1,32 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1000">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#070707"/><stop offset=".52" stop-color="#242424"/><stop offset="1" stop-color="#090909"/></linearGradient>
-    <filter id="noise"><feTurbulence baseFrequency=".72" numOctaves="4"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .15"/></feComponentTransfer></filter>
+    <linearGradient id="bg-byets" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#022c22"/>
+      <stop offset="55%" stop-color="#064e3b"/>
+      <stop offset="100%" stop-color="#021c16"/>
+    </linearGradient>
+    <linearGradient id="green-line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#a7f3d0"/>
+    </linearGradient>
   </defs>
-  <rect width="600" height="1000" fill="url(#g)"/>
-  <rect x="74" y="266" width="452" height="276" rx="4" fill="none" stroke="#d5d5d5" stroke-opacity=".46" stroke-width="3"/>
-  <path d="M132 432L210 366 284 411 368 322 474 389" fill="none" stroke="#ededed" stroke-opacity=".6" stroke-width="7"/>
-  <g fill="#dcdcdc"><circle cx="132" cy="432" r="10"/><circle cx="210" cy="366" r="10"/><circle cx="284" cy="411" r="10"/><circle cx="368" cy="322" r="10"/><circle cx="474" cy="389" r="10"/></g>
-  <path d="M171 648H429L489 760H112Z" fill="#d0d0d0" fill-opacity=".14" stroke="#ddd" stroke-opacity=".22"/>
-  <circle cx="195" cy="788" r="42" fill="#cfcfcf" fill-opacity=".28"/><circle cx="300" cy="788" r="42" fill="#cfcfcf" fill-opacity=".28"/><circle cx="405" cy="788" r="42" fill="#cfcfcf" fill-opacity=".28"/>
-  <text x="68" y="142" fill="#e8e8e8" font-family="Georgia,serif" font-size="72" font-weight="700">BYETS</text>
-  <text x="70" y="184" fill="#a8a8a8" font-family="monospace" font-size="17" letter-spacing="4">TRAINING / MENTORSHIP</text>
-  <rect width="600" height="1000" filter="url(#noise)" opacity=".48"/>
+  <rect width="600" height="1000" fill="url(#bg-byets)"/>
+  <!-- Training Board Outline -->
+  <rect x="74" y="266" width="452" height="276" rx="8" fill="#065f46" fill-opacity=".3" stroke="#10b981" stroke-opacity=".5" stroke-width="2"/>
+  <!-- Progress Step Line -->
+  <path d="M132 432L210 366 284 411 368 322 474 389" fill="none" stroke="url(#green-line)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#10b981">
+    <circle cx="132" cy="432" r="12" stroke="#fff" stroke-width="3"/>
+    <circle cx="210" cy="366" r="12" stroke="#fff" stroke-width="3"/>
+    <circle cx="284" cy="411" r="12" stroke="#fff" stroke-width="3"/>
+    <circle cx="368" cy="322" r="12" stroke="#fff" stroke-width="3"/>
+    <circle cx="474" cy="389" r="12" stroke="#fff" stroke-width="3"/>
+  </g>
+  <!-- Mentorship Audience Network -->
+  <path d="M171 648H429L489 760H112Z" fill="#10b981" fill-opacity=".15" stroke="#34d399" stroke-opacity=".3" stroke-width="2"/>
+  <circle cx="195" cy="788" r="42" fill="#047857" stroke="#34d399" stroke-opacity=".4" stroke-width="2"/>
+  <circle cx="300" cy="788" r="42" fill="#047857" stroke="#34d399" stroke-opacity=".4" stroke-width="2"/>
+  <circle cx="405" cy="788" r="42" fill="#047857" stroke="#34d399" stroke-opacity=".4" stroke-width="2"/>
+  <text x="68" y="142" fill="#ffffff" font-family="Georgia,serif" font-size="72" font-weight="700">BYETS</text>
+  <text x="70" y="184" fill="#34d399" font-family="monospace" font-size="17" font-weight="bold" letter-spacing="4">TRAINING / MENTORSHIP</text>
 </svg>

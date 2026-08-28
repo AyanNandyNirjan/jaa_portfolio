@@ -8,6 +8,35 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   --red: #ff2a2a;
+  --bg: #ebe6dc;
+  --bg-subtle: #e2ddd2;
+  --surface: #f5f1e8;
+  --surface-2: #ded8cb;
+  --text-primary: #0c0c0c;
+  --text-secondary: #242424;
+  --text-muted: #4e4e4e;
+  --border: rgba(0, 0, 0, 0.22);
+  --border-strong: rgba(0, 0, 0, 0.38);
+  --accent: #ff2a2a;
+  --accent-soft: rgba(255, 42, 42, 0.12);
+  --icon: #111111;
+  --icon-muted: #444444;
+}
+
+.dark {
+  --bg: #050505;
+  --bg-subtle: #0b0b0b;
+  --surface: #0f0f0f;
+  --surface-2: #161616;
+  --text-primary: #f3f0e9;
+  --text-secondary: rgba(243, 240, 233, 0.8);
+  --text-muted: rgba(243, 240, 233, 0.6);
+  --border: rgba(255, 255, 255, 0.18);
+  --border-strong: rgba(255, 255, 255, 0.36);
+  --accent: #ff2a2a;
+  --accent-soft: rgba(255, 42, 42, 0.18);
+  --icon: rgba(243, 240, 233, 0.88);
+  --icon-muted: rgba(243, 240, 233, 0.62);
 }
 
 * {
@@ -17,11 +46,13 @@
 html {
   min-width: 320px;
   scroll-behavior: auto;
-  background: #f1eee6;
+  background: var(--bg);
+  color: var(--text-primary);
 }
 
 html.dark {
   background: #050505;
+  color: #f3f0e9;
 }
 
 body {
@@ -30,19 +61,26 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background: inherit;
+  color: inherit;
 }
 
+/* Specific theme transition on background and text colors */
 body,
-a,
-button {
-  cursor: auto;
+header,
+section,
+footer,
+nav,
+article {
+  transition-property: background-color, border-color, color;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@media (pointer: fine) {
+@media (hover: hover) and (pointer: fine) {
+  html,
   body,
-  a,
-  button {
-    cursor: none;
+  body * {
+    cursor: none !important;
   }
 }
 
@@ -53,109 +91,57 @@ a {
 
 button:focus-visible,
 a:focus-visible {
-  outline: 2px solid var(--red);
-  outline-offset: 4px;
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 ::selection {
-  background: var(--red);
-  color: white;
+  background: var(--accent);
+  color: #ffffff;
 }
 
 .hero-grid {
   background-image:
-    linear-gradient(rgba(0,0,0,.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,.1) 1px, transparent 1px);
+    linear-gradient(rgba(0, 0, 0, 0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.10) 1px, transparent 1px);
   background-size: 56px 56px;
 }
 
 .dark .hero-grid {
   background-image:
-    linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
 }
 
-.hero-shell {
-  --mx: 50%;
-  --my: 42%;
-}
-
-.hero-flashlight {
-  background: radial-gradient(circle 260px at var(--mx) var(--my), rgba(255,42,42,.13), transparent 66%);
+.global-cursor-glow {
+  background: radial-gradient(circle 280px at center, rgba(255, 42, 42, 0.12) 0%, rgba(255, 42, 42, 0.04) 45%, transparent 70%);
   mix-blend-mode: multiply;
+  pointer-events: none;
 }
 
-.dark .hero-flashlight {
-  background: radial-gradient(circle 280px at var(--mx) var(--my), rgba(255,42,42,.2), transparent 66%);
+.dark .global-cursor-glow {
+  background: radial-gradient(circle 300px at center, rgba(255, 42, 42, 0.22) 0%, rgba(255, 42, 42, 0.08) 45%, transparent 70%);
   mix-blend-mode: screen;
+  pointer-events: none;
 }
 
 .scanline {
   background-image: repeating-linear-gradient(
     0deg,
-    rgba(255,255,255,.025) 0,
-    rgba(255,255,255,.025) 1px,
+    rgba(255, 255, 255, 0.02) 0,
+    rgba(255, 255, 255, 0.02) 1px,
     transparent 1px,
     transparent 4px
   );
 }
 
-.cursor-dot {
-  width: 5px;
-  height: 5px;
-  margin-left: -2.5px;
-  margin-top: -2.5px;
-  border-radius: 999px;
-  background: #ff2a2a;
-  box-shadow: 0 0 18px rgba(255,42,42,.8);
-}
-
-.cursor-ring {
-  width: 34px;
-  height: 34px;
-  margin-left: -17px;
-  margin-top: -17px;
-  border: 1px solid rgba(255,42,42,.75);
-  border-radius: 999px;
-  transition: width .22s ease, height .22s ease, margin .22s ease, background .22s ease;
-}
-
-.cursor-ring::before,
-.cursor-ring::after {
-  content: '';
-  position: absolute;
-  background: rgba(255,42,42,.55);
-}
-
-.cursor-ring::before {
-  left: 50%;
-  top: -7px;
-  width: 1px;
-  height: 48px;
-}
-
-.cursor-ring::after {
-  top: 50%;
-  left: -7px;
-  width: 48px;
-  height: 1px;
-}
-
-.cursor-ring--active {
-  width: 52px;
-  height: 52px;
-  margin-left: -26px;
-  margin-top: -26px;
-  background: rgba(255,42,42,.08);
-}
-
 @layer components {
   .hud-icon {
-    @apply grid size-9 place-items-center border border-black/15 text-black/60 transition duration-200 hover:border-[#ff2a2a] hover:bg-[#ff2a2a] hover:text-white dark:border-white/15 dark:text-white/60;
+    @apply grid size-9 place-items-center border border-black/25 bg-black/[0.04] text-black/85 transition-colors duration-200 hover:border-[#ff2a2a] hover:bg-[#ff2a2a] hover:text-white dark:border-white/20 dark:bg-white/[0.02] dark:text-white/80 dark:hover:border-[#ff2a2a] dark:hover:bg-[#ff2a2a] dark:hover:text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#ff2a2a];
   }
 
   .hud-link {
-    @apply relative py-2 transition-colors duration-200 hover:text-[#ff2a2a] dark:hover:text-[#ff2a2a];
+    @apply relative py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-black/85 transition-colors duration-200 hover:text-[#ff2a2a] dark:text-white/80 dark:hover:text-[#ff2a2a] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#ff2a2a];
   }
 
   .hud-link::after {
@@ -168,42 +154,88 @@ a:focus-visible {
   }
 
   .section-kicker {
-    @apply font-mono text-[9px] uppercase tracking-[0.18em] text-[#ff2a2a] sm:text-[10px];
+    @apply font-mono text-[9px] uppercase tracking-[0.2em] text-[#ff2a2a] sm:text-[10px];
   }
 
   .mode-button {
-    @apply flex items-center gap-2 border border-black/15 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.15em] text-black/50 transition hover:border-[#ff2a2a] hover:text-[#ff2a2a] dark:border-white/15 dark:text-white/45;
+    @apply flex items-center gap-2 border border-black/25 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.15em] text-black/80 transition-colors duration-200 hover:border-[#ff2a2a] hover:text-[#ff2a2a] dark:border-white/20 dark:text-white/70 dark:hover:border-[#ff2a2a] dark:hover:text-[#ff2a2a] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#ff2a2a];
   }
 
   .mode-button--active {
-    @apply border-[#ff2a2a] bg-[#ff2a2a] text-white hover:text-white;
+    @apply border-[#ff2a2a] bg-[#ff2a2a] text-white hover:text-white dark:border-[#ff2a2a] dark:bg-[#ff2a2a] dark:text-white;
   }
 
   .terminal-button {
-    @apply border border-black/20 px-4 py-3 font-mono text-[9px] uppercase tracking-[0.17em] transition hover:border-[#ff2a2a] hover:bg-[#ff2a2a] hover:text-white dark:border-white/20;
+    @apply border border-black/30 bg-black/[0.04] px-4 py-3 font-mono text-[9px] uppercase tracking-[0.17em] text-black transition-colors duration-200 hover:border-[#ff2a2a] hover:bg-[#ff2a2a] hover:text-white dark:border-white/25 dark:bg-white/[0.03] dark:text-white/90 dark:hover:border-[#ff2a2a] dark:hover:bg-[#ff2a2a] dark:hover:text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#ff2a2a];
   }
 
   .tag-dark {
-    @apply border border-white/15 bg-white/[0.03] px-3 py-2 font-mono text-[9px] uppercase tracking-[0.13em] text-white/55;
+    @apply border border-black/20 bg-black/[0.04] px-3 py-2 font-mono text-[9px] uppercase tracking-[0.13em] text-black/85 dark:border-white/20 dark:bg-white/[0.04] dark:text-white/75;
   }
 
   .contact-node {
-    @apply flex min-h-[88px] items-center gap-3 p-4 font-mono text-[10px] uppercase tracking-[0.15em] transition hover:bg-[#111] sm:p-5;
+    @apply flex min-h-[88px] items-center gap-3 p-4 font-mono text-[10px] uppercase tracking-[0.15em] transition-colors duration-200 hover:bg-[#111] sm:p-5;
   }
 }
 
 .evidence-card {
   isolation: isolate;
-  box-shadow: 0 18px 45px rgba(0, 0, 0, .16);
+  height: clamp(400px, calc(100vh - 240px), 580px);
+  flex: 0 0 215px;
+  width: 215px;
+  max-width: 215px;
+  background-color: #f5f1e8;
+  border: 1px solid rgba(0, 0, 0, 0.22);
+  border-radius: 0;
+  transition: flex-basis 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+              width 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+              max-width 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.3s ease,
+              background-color 0.3s ease;
+  will-change: flex-basis, width;
 }
 
 .dark .evidence-card {
-  box-shadow: 0 22px 60px rgba(0, 0, 0, .42);
+  background-color: #050505;
+  border-color: rgba(255, 255, 255, 0.18);
 }
 
-.evidence-card:hover .evidence-card__frame {
-  inset: 6px;
-  border-color: rgba(255, 42, 42, .72);
+@media (min-width: 640px) {
+  .evidence-card {
+    height: clamp(420px, calc(100vh - 230px), 590px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .evidence-card {
+    height: clamp(400px, calc(100vh - 230px), 590px);
+    flex: 0 0 215px;
+    width: 215px;
+    max-width: 215px;
+  }
+
+  .evidence-card--active {
+    flex: 0 0 390px !important;
+    width: 390px !important;
+    max-width: 390px !important;
+    border-color: #ff2a2a !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .evidence-card {
+    height: clamp(400px, 62vh, 560px);
+    flex: 0 0 78vw;
+    width: 78vw;
+    max-width: 320px;
+  }
+
+  .evidence-card--active {
+    flex: 0 0 86vw !important;
+    width: 86vw !important;
+    max-width: 380px !important;
+    border-color: #ff2a2a !important;
+  }
 }
 
 .archive-arrow {
@@ -211,14 +243,14 @@ a:focus-visible {
   width: 42px;
   height: 42px;
   place-items: center;
-  border: 1px solid rgba(0, 0, 0, .18);
-  color: rgba(0, 0, 0, .48);
-  transition: border-color .2s ease, color .2s ease, background .2s ease;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  color: rgba(0, 0, 0, 0.85);
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
 }
 
 .dark .archive-arrow {
-  border-color: rgba(255, 255, 255, .18);
-  color: rgba(255, 255, 255, .5);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .archive-arrow:hover {
@@ -228,11 +260,11 @@ a:focus-visible {
 }
 
 .case-modal {
-  animation: caseIn .35s cubic-bezier(.2,.8,.2,1) both;
+  animation: caseIn 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
 @keyframes caseIn {
-  from { opacity: 0; transform: translateY(18px) scale(.985); }
+  from { opacity: 0; transform: translateY(18px) scale(0.985); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
@@ -241,9 +273,9 @@ a:focus-visible {
   *::before,
   *::after {
     scroll-behavior: auto !important;
-    animation-duration: .01ms !important;
+    animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
@@ -255,54 +287,25 @@ a:focus-visible {
 }
 
 .contact-noise {
-  opacity: .18;
+  opacity: 0.12;
   background-image:
-    radial-gradient(circle at 20% 85%, rgba(255, 42, 42, .12), transparent 31%),
-    radial-gradient(circle at 72% 18%, rgba(255, 42, 42, .04), transparent 24%);
+    radial-gradient(circle at 20% 85%, rgba(255, 42, 42, 0.10), transparent 31%),
+    radial-gradient(circle at 72% 18%, rgba(255, 42, 42, 0.04), transparent 24%);
 }
 
 .dark .contact-noise {
-  opacity: .72;
+  opacity: 0.72;
   background-image:
-    radial-gradient(circle at 15% 88%, rgba(115, 25, 25, .17), transparent 28%),
-    radial-gradient(circle at 75% 24%, rgba(255, 42, 42, .025), transparent 22%);
+    radial-gradient(circle at 15% 88%, rgba(115, 25, 25, 0.17), transparent 28%),
+    radial-gradient(circle at 75% 24%, rgba(255, 42, 42, 0.025), transparent 22%);
 }
 
 .contact-vignette {
-  background: radial-gradient(circle at 50% 45%, transparent 0%, transparent 42%, rgba(0, 0, 0, .08) 100%);
+  background: radial-gradient(circle at 50% 45%, transparent 0%, transparent 42%, rgba(0, 0, 0, 0.06) 100%);
 }
 
 .dark .contact-vignette {
-  background: radial-gradient(circle at 50% 45%, transparent 0%, rgba(0, 0, 0, .12) 50%, rgba(0, 0, 0, .58) 100%);
-}
-
-.contact-signal__line {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  width: 44vw;
-  min-width: 330px;
-  max-width: 780px;
-  height: 1px;
-  background: linear-gradient(90deg, #ff2a2a 0%, #ff2a2a 82%, transparent 100%);
-  box-shadow: 0 0 9px rgba(255, 42, 42, .55);
-  transform-origin: left center;
-  transform: rotate(-36deg);
-  animation: contactSignalGlow 3.4s ease-in-out infinite;
-}
-
-.contact-signal__node {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  width: 22px;
-  height: 22px;
-  border-radius: 999px;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, .16);
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, .2), 0 0 22px rgba(255, 255, 255, .14);
-  transform: translate(-50%, -50%);
-  animation: contactNodePulse 3.4s ease-in-out infinite;
+  background: radial-gradient(circle at 50% 45%, transparent 0%, rgba(0, 0, 0, 0.12) 50%, rgba(0, 0, 0, 0.58) 100%);
 }
 
 .contact-channel-dot {
@@ -310,27 +313,28 @@ a:focus-visible {
   height: 7px;
   border-radius: 999px;
   background: #ff2a2a;
-  box-shadow: 0 0 0 5px rgba(255, 42, 42, .05), 0 0 16px rgba(255, 42, 42, .72);
+  box-shadow: 0 0 0 5px rgba(255, 42, 42, 0.08), 0 0 16px rgba(255, 42, 42, 0.75);
   animation: contactChannelBlink 2s ease-in-out infinite;
 }
 
 .contact-initiate {
   position: relative;
   display: inline-flex;
-  min-width: 275px;
-  min-height: 76px;
+  min-width: 250px;
+  min-height: 56px;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(0, 0, 0, .28);
-  padding: 1rem 3.5rem;
-  font-size: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  padding: 0.85rem 2.75rem;
+  font-size: 13px;
   line-height: 1;
   text-transform: uppercase;
-  transition: color .3s ease, border-color .3s ease, background-color .3s ease;
+  color: inherit;
+  transition: color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
 }
 
 .dark .contact-initiate {
-  border-color: rgba(255, 255, 255, .25);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .contact-initiate::before {
@@ -340,13 +344,13 @@ a:focus-visible {
   background: #ff2a2a;
   transform: scaleX(0);
   transform-origin: right center;
-  transition: transform .35s cubic-bezier(.7, 0, .3, 1);
+  transition: transform 0.35s cubic-bezier(0.7, 0, 0.3, 1);
   z-index: -1;
 }
 
 .contact-initiate:hover {
   border-color: #ff2a2a;
-  color: #fff;
+  color: #ffffff;
 }
 
 .contact-initiate:hover::before {
@@ -355,12 +359,12 @@ a:focus-visible {
 }
 
 .contact-bracket-link {
-  transition: opacity .25s ease, letter-spacing .25s ease;
+  transition: opacity 0.25s ease, letter-spacing 0.25s ease;
 }
 
 .contact-bracket-link:hover {
-  opacity: .62;
-  letter-spacing: .12em;
+  opacity: 0.8;
+  letter-spacing: 0.12em;
 }
 
 .contact-mode-panel {
@@ -368,14 +372,14 @@ a:focus-visible {
   min-width: 220px;
   align-items: center;
   gap: 18px;
-  border: 1px solid rgba(255, 42, 42, .32);
+  border: 1px solid rgba(255, 42, 42, 0.35);
   padding: 16px 20px;
-  background: rgba(241, 238, 230, .44);
+  background: rgba(245, 241, 232, 0.85);
   backdrop-filter: blur(10px);
 }
 
 .dark .contact-mode-panel {
-  background: rgba(5, 5, 5, .42);
+  background: rgba(10, 10, 10, 0.6);
 }
 
 .contact-cube {
@@ -397,38 +401,15 @@ a:focus-visible {
 
 .contact-cube span:nth-child(3) {
   transform: translate(13px, -8px);
-  opacity: .58;
-}
-
-@keyframes contactSignalGlow {
-  0%, 100% { opacity: .72; filter: brightness(.9); }
-  50% { opacity: 1; filter: brightness(1.35); }
-}
-
-@keyframes contactNodePulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,.12), 0 0 18px rgba(255,255,255,.12); }
-  50% { box-shadow: 0 0 0 8px rgba(255,255,255,0), 0 0 28px rgba(255,255,255,.22); }
+  opacity: 0.65;
 }
 
 @keyframes contactChannelBlink {
-  0%, 100% { opacity: .55; }
+  0%, 100% { opacity: 0.6; }
   50% { opacity: 1; }
 }
 
 @media (max-width: 767px) {
-  .contact-signal__line {
-    left: 52%;
-    width: 65vw;
-    min-width: 260px;
-    transform: rotate(-43deg);
-  }
-
-  .contact-signal__node {
-    left: 52%;
-    width: 16px;
-    height: 16px;
-  }
-
   .contact-initiate {
     min-width: min(100%, 285px);
     min-height: 66px;
@@ -442,8 +423,6 @@ a:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .contact-signal__line,
-  .contact-signal__node,
   .contact-channel-dot {
     animation: none;
   }
