@@ -137,7 +137,7 @@ function EvidenceCard({ item, isActive, onHover, onLeave, onOpen }) {
       </div>
 
       {/* Top-Left Segmented Technical Ticks */}
-      <div className="absolute left-3.5 top-3.5 z-20 flex flex-col gap-[3px]">
+      <div className="absolute left-3 top-3 z-20 flex flex-col gap-[3px] sm:left-3.5 sm:top-3.5">
         {[...Array(isActive ? 9 : 6)].map((_, i) => (
           <span
             key={i}
@@ -149,9 +149,9 @@ function EvidenceCard({ item, isActive, onHover, onLeave, onOpen }) {
       </div>
 
       {/* Top-Right Vertical Category Label (Rotated bottom-to-top) */}
-      <div className="absolute right-3 top-3.5 z-20 flex items-center">
+      <div className="absolute right-2.5 top-3 z-20 flex items-center sm:right-3 sm:top-3.5">
         <span
-          className={`font-mono text-[8.5px] uppercase tracking-[0.2em] [writing-mode:vertical-rl] [transform:rotate(180deg)] transition-colors duration-300 select-none font-bold ${
+          className={`font-mono text-[8px] uppercase tracking-[0.2em] [writing-mode:vertical-rl] [transform:rotate(180deg)] transition-colors duration-300 select-none font-bold sm:text-[8.5px] ${
             isActive ? 'text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]' : 'text-[#ff2a2a]'
           }`}
         >
@@ -175,15 +175,15 @@ function EvidenceCard({ item, isActive, onHover, onLeave, onOpen }) {
       </div>
 
       {/* Bottom Content Area */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 p-4 pb-4 sm:p-5 sm:pb-5 text-left">
+      <div className="absolute bottom-0 left-0 right-0 z-20 p-3.5 pb-3.5 sm:p-5 sm:pb-5 text-left">
         {/* Evidence Number Label */}
-        <div className="mb-1.5 font-mono text-[9px] uppercase tracking-[0.2em] text-[#ff2a2a] font-bold">
+        <div className="mb-1 font-mono text-[8.5px] uppercase tracking-[0.2em] text-[#ff2a2a] font-bold sm:text-[9px]">
           EVIDENCE #{item.id}
         </div>
 
         {/* Large Elegant Serif Title */}
         <h3
-          className="font-display text-[25px] sm:text-[28px] lg:text-[32px] font-normal leading-[0.92] tracking-[-0.045em] text-[#ffffff] transition-transform duration-500 ease-out"
+          className="font-display text-[22px] sm:text-[28px] lg:text-[32px] font-normal leading-[0.94] tracking-[-0.045em] text-[#ffffff] transition-transform duration-500 ease-out"
           style={{
             transform: isActive ? 'translateY(-3px)' : 'translateY(0)',
           }}
@@ -191,9 +191,9 @@ function EvidenceCard({ item, isActive, onHover, onLeave, onOpen }) {
           {item.company}
         </h3>
 
-        {/* Thin Horizontal Red Line (Animates width in active state) */}
+        {/* Thin Horizontal Red Line */}
         <div
-          className="my-2.5 h-[1px] bg-[#ff2a2a] transition-all duration-700 ease-out"
+          className="my-2 h-[1px] bg-[#ff2a2a] transition-all duration-700 ease-out sm:my-2.5"
           style={{
             width: isActive ? '100%' : '0%',
             opacity: isActive ? 1 : 0,
@@ -202,7 +202,7 @@ function EvidenceCard({ item, isActive, onHover, onLeave, onOpen }) {
 
         {/* [ CLICK TO DECRYPT ] Action Label */}
         <div
-          className="font-mono text-[8.5px] uppercase tracking-[0.18em] text-[#ffffff] transition-all duration-500 ease-out font-bold"
+          className="font-mono text-[8px] uppercase tracking-[0.18em] text-[#ffffff] transition-all duration-500 ease-out font-bold sm:text-[8.5px]"
           style={{
             opacity: isActive ? 1 : 0,
             transform: isActive ? 'translateY(0)' : 'translateY(6px)',
@@ -222,7 +222,7 @@ function EvidenceListItem({ item, onOpen }) {
     <button
       type="button"
       onClick={() => onOpen(item)}
-      className="group relative grid w-full gap-4 border-b border-black/20 bg-transparent px-3 py-6 text-left transition-colors duration-300 hover:bg-[#f5f1e8] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#ff2a2a] dark:border-white/15 dark:hover:bg-[#101010] sm:grid-cols-[95px_1fr_auto_130px] sm:items-center sm:px-5 sm:py-7 lg:grid-cols-[115px_1fr_80px_160px]"
+      className="group relative grid w-full gap-3 border-b border-black/20 bg-transparent px-3 py-5 text-left transition-colors duration-300 hover:bg-[#f5f1e8] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#ff2a2a] dark:border-white/15 dark:hover:bg-[#101010] sm:grid-cols-[95px_1fr_auto_130px] sm:items-center sm:gap-4 sm:px-5 sm:py-7 lg:grid-cols-[115px_1fr_80px_160px]"
       aria-label={`${item.company} — ${item.role}`}
     >
       {/* HUD Corner Targeting Brackets for the Row */}
@@ -237,19 +237,19 @@ function EvidenceListItem({ item, onOpen }) {
       </div>
 
       {/* Column 1: Index Number & Animated Ticks */}
-      <div className="flex flex-col gap-1.5 font-mono text-[9px] uppercase tracking-[0.16em]">
+      <div className="flex items-center justify-between sm:flex-col sm:items-start sm:justify-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.16em]">
         <div className="flex items-center gap-2 font-bold text-[#ff2a2a]">
-          <span className="text-[12px]">#{item.id}</span>
+          <span className="text-[11px] sm:text-[12px]">#{item.id}</span>
           <span className="flex gap-[2px]">
             {[...Array(5)].map((_, i) => (
               <span
                 key={i}
-                className="h-[9px] w-[2px] bg-black/25 transition-colors duration-300 group-hover:bg-[#ff2a2a] dark:bg-white/25"
+                className="h-[8px] w-[2px] bg-black/25 transition-colors duration-300 group-hover:bg-[#ff2a2a] dark:bg-white/25 sm:h-[9px]"
               />
             ))}
           </span>
         </div>
-        <span className="text-black/60 dark:text-white/55 text-[8.5px] tracking-[0.14em] font-medium">
+        <span className="text-black/60 dark:text-white/55 text-[8px] tracking-[0.14em] font-medium sm:text-[8.5px]">
           {categoryLabels[item.id]?.replace(' •', '') || item.type.replace(' •', '')}
         </span>
       </div>
@@ -257,23 +257,23 @@ function EvidenceListItem({ item, onOpen }) {
       {/* Column 2: Title, Expanding Line, and Subtitles */}
       <div className="transition-transform duration-300 group-hover:translate-x-1 sm:pr-4">
         <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          <h3 className="font-display text-2xl font-normal tracking-[-0.04em] text-[#0c0c0c] transition-colors duration-200 group-hover:text-[#ff2a2a] dark:text-[#f3f0e9] sm:text-4xl lg:text-5xl">
+          <h3 className="font-display text-xl font-normal tracking-[-0.04em] text-[#0c0c0c] transition-colors duration-200 group-hover:text-[#ff2a2a] dark:text-[#f3f0e9] sm:text-3xl lg:text-5xl">
             {item.company}
           </h3>
-          <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-[#ff2a2a] opacity-0 transition-opacity duration-300 group-hover:opacity-100 font-bold hidden sm:inline">
+          <span className="font-mono text-[8.5px] uppercase tracking-[0.15em] text-[#ff2a2a] opacity-0 transition-opacity duration-300 group-hover:opacity-100 font-bold hidden sm:inline">
             [ DECRYPT ]
           </span>
         </div>
 
         {/* Animated Expanding Red Accent Line */}
-        <div className="my-2 h-[1px] w-0 bg-[#ff2a2a] transition-all duration-500 ease-out group-hover:w-48 sm:group-hover:w-64" />
+        <div className="my-1.5 h-[1px] w-0 bg-[#ff2a2a] transition-all duration-500 ease-out group-hover:w-36 sm:my-2 sm:group-hover:w-64" />
 
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-black/75 dark:text-white/70">
+        <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs text-black/75 dark:text-white/70">
           <span className="font-medium">{item.role}</span>
           {item.location && (
             <>
               <span className="text-black/30 dark:text-white/30">•</span>
-              <span className="font-mono text-[10px] text-black/60 dark:text-white/55 uppercase">{item.location}</span>
+              <span className="font-mono text-[9.5px] text-black/60 dark:text-white/55 uppercase">{item.location}</span>
             </>
           )}
         </div>
@@ -281,7 +281,7 @@ function EvidenceListItem({ item, onOpen }) {
 
       {/* Column 3: Live Visual Thumbnail Box */}
       <div className="hidden sm:block">
-        <div className="relative h-[68px] w-[68px] overflow-hidden border border-black/25 bg-black/10 transition-all duration-500 group-hover:border-[#ff2a2a] group-hover:shadow-[0_0_15px_rgba(255,42,42,0.25)] dark:border-white/20 dark:bg-white/5 lg:h-[74px] lg:w-[74px]">
+        <div className="relative h-[64px] w-[64px] overflow-hidden border border-black/25 bg-black/10 transition-all duration-500 group-hover:border-[#ff2a2a] group-hover:shadow-[0_0_15px_rgba(255,42,42,0.25)] dark:border-white/20 dark:bg-white/5 lg:h-[74px] lg:w-[74px]">
           <img
             src={item.image}
             alt=""
@@ -298,8 +298,8 @@ function EvidenceListItem({ item, onOpen }) {
       </div>
 
       {/* Column 4: Period & Action Trigger */}
-      <div className="flex items-center justify-between sm:flex-col sm:items-end sm:justify-center font-mono text-[9px] uppercase tracking-[0.14em]">
-        <div className="text-black/85 dark:text-white/75 font-semibold text-right">
+      <div className="flex items-center justify-between sm:flex-col sm:items-end sm:justify-center font-mono text-[8.5px] uppercase tracking-[0.14em] sm:text-[9px]">
+        <div className="text-black/85 dark:text-white/75 font-semibold sm:text-right">
           <div>{item.period}</div>
           <div className="mt-0.5 flex items-center gap-1.5 sm:justify-end text-black/60 dark:text-white/60">
             <span className="size-1.5 rounded-full bg-[#ff2a2a] animate-pulse" />
@@ -307,7 +307,7 @@ function EvidenceListItem({ item, onOpen }) {
           </div>
         </div>
 
-        <div className="mt-2.5 hidden sm:flex items-center gap-1.5 rounded-none border border-transparent px-2.5 py-1 text-[8.5px] font-bold text-[#ff2a2a] transition-all duration-300 group-hover:border-[#ff2a2a] group-hover:bg-[#ff2a2a] group-hover:text-white">
+        <div className="mt-2.5 flex items-center gap-1.5 rounded-none border border-black/25 px-2.5 py-1 text-[8.5px] font-bold text-[#ff2a2a] transition-all duration-300 group-hover:border-[#ff2a2a] group-hover:bg-[#ff2a2a] group-hover:text-white dark:border-white/20 sm:border-transparent">
           <span>VIEW FILE</span>
           <span>→</span>
         </div>
@@ -401,7 +401,7 @@ export default function CaseArchive() {
       return;
     }
 
-    scrollerRef.current?.scrollBy({ left: direction * 290, behavior: 'smooth' });
+    scrollerRef.current?.scrollBy({ left: direction * 280, behavior: 'smooth' });
   }
 
   return (
@@ -411,29 +411,29 @@ export default function CaseArchive() {
         ref={sectionRef}
         className={`relative flex flex-col justify-between border-b border-black/20 bg-[#ded8cb] text-[#0c0c0c] dark:border-white/20 dark:bg-[#050505] dark:text-[#f3f0e9] ${
           mode === 'slider'
-            ? 'overflow-hidden py-12 lg:h-screen lg:min-h-0 lg:py-0 lg:pt-16 lg:pb-5'
-            : 'overflow-visible min-h-screen py-16 pt-20 pb-28 lg:h-auto lg:min-h-screen lg:pt-24 lg:pb-32'
+            ? 'overflow-hidden py-10 sm:py-12 lg:h-screen lg:min-h-0 lg:py-0 lg:pt-16 lg:pb-5'
+            : 'overflow-visible min-h-screen py-12 pt-16 pb-24 sm:py-16 sm:pt-20 sm:pb-28 lg:h-auto lg:min-h-screen lg:pt-24 lg:pb-32'
         }`}
       >
         <div className="mx-auto w-full max-w-[1500px] px-4 sm:px-6 lg:px-8 lg:pt-3">
-          <div className="flex items-start justify-between gap-8">
+          <div className="flex items-start justify-between gap-4 sm:gap-8">
             <div>
               <div className="section-kicker">CAM_04 [REC] // PROFESSIONAL ARCHIVE</div>
-              <h2 className="mt-2 font-display text-[clamp(2.4rem,4.2vw,4.5rem)] font-normal uppercase leading-[0.88] tracking-[-0.055em] text-[#0c0c0c] dark:text-[#f3f0e9]">
+              <h2 className="mt-1.5 sm:mt-2 font-display text-[clamp(2.2rem,4.2vw,4.5rem)] font-normal uppercase leading-[0.88] tracking-[-0.055em] text-[#0c0c0c] dark:text-[#f3f0e9]">
                 Evidence Board
               </h2>
             </div>
 
-            <div className="hidden pt-3 text-right font-mono text-[9px] uppercase leading-5 tracking-[0.13em] text-black/85 dark:text-white/70 md:block font-medium">
+            <div className="hidden pt-2 text-right font-mono text-[8.5px] uppercase leading-4 tracking-[0.13em] text-black/85 dark:text-white/70 md:block sm:text-[9px] sm:leading-5 font-medium">
               <p>SECTOR: MARKETING</p>
               <p>SCANNING: <span className="text-[#ff2a2a] font-bold">ACTIVE</span></p>
               <p className="mt-1 text-[#ff2a2a] font-bold">SIGNAL_STRONG</p>
             </div>
           </div>
 
-          <div className="mt-3.5 sm:mt-4 h-px bg-black/25 dark:bg-white/20" />
+          <div className="mt-3 sm:mt-4 h-px bg-black/25 dark:bg-white/20" />
 
-          <div className="relative mt-3 flex min-h-9 items-center justify-between gap-4">
+          <div className="relative mt-3 flex flex-wrap min-h-9 items-center justify-between gap-3 sm:flex-nowrap">
             <div className="flex items-center gap-0">
               <button
                 type="button"
@@ -472,7 +472,7 @@ export default function CaseArchive() {
               </div>
             )}
 
-            <div className="font-mono text-[9px] uppercase tracking-[0.14em] text-black/70 dark:text-white/60 font-semibold">
+            <div className="font-mono text-[8.5px] uppercase tracking-[0.14em] text-black/70 dark:text-white/60 font-semibold sm:text-[9px]">
               {String(cards.length).padStart(2, '0')} FILES // LIVE INDEX
             </div>
           </div>
@@ -481,11 +481,12 @@ export default function CaseArchive() {
         {mode === 'slider' ? (
           <div
             ref={scrollerRef}
-            className="my-auto overflow-x-auto pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:overflow-visible lg:pb-0"
+            className="my-auto overflow-x-auto pb-3 pt-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:overflow-visible lg:py-0"
+            style={{ WebkitOverflowScrolling: 'touch' }}
           >
             <div
               ref={trackRef}
-              className="flex w-max items-stretch gap-4 sm:gap-5 lg:gap-6 px-4 sm:px-6 lg:px-[3vw]"
+              className="flex w-max items-stretch gap-3.5 sm:gap-5 lg:gap-6 px-4 sm:px-6 lg:px-[3vw]"
             >
               {cards.map((item) => (
                 <EvidenceCard
@@ -501,7 +502,7 @@ export default function CaseArchive() {
               <div className="evidence-card relative flex shrink-0 items-end overflow-hidden border border-dashed border-black/30 bg-black/[0.04] p-4 sm:p-5 dark:border-white/25 dark:bg-white/[0.03]">
                 <div>
                   <p className="section-kicker">ARCHIVE_END</p>
-                  <p className="mt-3 font-display text-2xl leading-[0.9] tracking-[-0.05em] sm:text-3xl text-[#0c0c0c] dark:text-[#f3f0e9]">
+                  <p className="mt-3 font-display text-xl leading-[0.9] tracking-[-0.05em] sm:text-3xl text-[#0c0c0c] dark:text-[#f3f0e9]">
                     More campaign evidence can be added here.
                   </p>
                   <p className="mt-3 text-xs leading-5 text-black/75 dark:text-white/60">
@@ -512,8 +513,8 @@ export default function CaseArchive() {
             </div>
           </div>
         ) : (
-          <div className="mx-auto w-full max-w-[1500px] px-4 pb-20 sm:px-6 lg:px-8">
-            <div className="mt-5 border-t border-black/20 dark:border-white/20">
+          <div className="mx-auto w-full max-w-[1500px] px-4 pb-16 sm:px-6 sm:pb-20 lg:px-8">
+            <div className="mt-4 border-t border-black/20 dark:border-white/20 sm:mt-5">
               {cards.map((item) => (
                 <EvidenceListItem
                   key={item.id}

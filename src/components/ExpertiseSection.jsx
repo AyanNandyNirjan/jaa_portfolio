@@ -25,16 +25,16 @@ export default function ExpertiseSection() {
   }, []);
 
   return (
-    <section id="expertise" ref={sectionRef} className="border-b border-black/20 bg-[#ebe6dc] py-24 dark:border-white/20 dark:bg-[#050505] lg:py-32">
+    <section id="expertise" ref={sectionRef} className="border-b border-black/20 bg-[#ebe6dc] py-16 sm:py-24 lg:py-32 dark:border-white/20 dark:bg-[#050505]">
       <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-8 border-b border-black/25 pb-8 dark:border-white/20 lg:grid-cols-[1fr_0.7fr] lg:items-end">
+        <div className="grid gap-6 border-b border-black/25 pb-6 dark:border-white/20 sm:gap-8 sm:pb-8 lg:grid-cols-[1fr_0.7fr] lg:items-end">
           <div>
             <p className="section-kicker">CAPABILITY_MATRIX // ACTIVE MODULES</p>
-            <h2 className="mt-3 font-display text-[clamp(3.3rem,8vw,8rem)] font-black uppercase leading-[0.77] tracking-[-0.065em] text-[#0c0c0c] dark:text-[#f3f0e9]">
+            <h2 className="mt-2 sm:mt-3 font-display text-[clamp(2.75rem,7.5vw,8rem)] font-black uppercase leading-[0.8] tracking-[-0.065em] text-[#0c0c0c] dark:text-[#f3f0e9]">
               Marketing<br />Intelligence
             </h2>
           </div>
-          <p className="max-w-xl text-sm leading-7 text-black/85 dark:text-white/75 lg:justify-self-end lg:text-right font-medium">
+          <p className="max-w-xl text-xs leading-6 text-black/85 dark:text-white/75 sm:text-sm sm:leading-7 lg:justify-self-end lg:text-right font-medium">
             A structured view of Jalal's documented capabilities across search, social media, creative communication, and practical digital-marketing training.
           </p>
         </div>
@@ -43,21 +43,21 @@ export default function ExpertiseSection() {
           {expertise.map((item, index) => (
             <article
               key={item.id}
-              className="expertise-row group grid gap-4 py-7 transition-colors duration-200 hover:bg-[#ff2a2a] hover:text-white sm:grid-cols-[70px_1fr_120px] sm:items-center sm:px-3 lg:grid-cols-[90px_1fr_160px]"
+              className="expertise-row group grid gap-3 py-5 sm:py-7 transition-colors duration-200 hover:bg-[#ff2a2a] hover:text-white grid-cols-1 sm:grid-cols-[70px_1fr_120px] sm:items-center sm:px-3 lg:grid-cols-[90px_1fr_160px]"
             >
-              <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#ff2a2a] group-hover:text-white font-bold">
+              <div className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#ff2a2a] group-hover:text-white font-bold sm:text-[10px]">
                 MOD_{item.id}
               </div>
               <div>
-                <h3 className="text-2xl font-black uppercase tracking-[-0.045em] text-[#0c0c0c] group-hover:text-white dark:text-[#f3f0e9] sm:text-4xl lg:text-5xl">
+                <h3 className="text-xl font-black uppercase tracking-[-0.045em] text-[#0c0c0c] group-hover:text-white dark:text-[#f3f0e9] sm:text-3xl lg:text-5xl">
                   {item.title}
                 </h3>
-                <p className="mt-2 max-w-3xl text-sm leading-6 text-black/80 transition-colors duration-200 group-hover:text-white/90 dark:text-white/75 font-normal">
+                <p className="mt-1.5 sm:mt-2 max-w-3xl text-xs leading-5 sm:text-sm sm:leading-6 text-black/80 transition-colors duration-200 group-hover:text-white/90 dark:text-white/75 font-normal">
                   {item.copy}
                 </p>
               </div>
-              <div className="font-mono text-[9px] uppercase tracking-[0.16em] text-black/75 group-hover:text-white/90 dark:text-white/65 sm:text-right font-medium">
-                [{item.label}]<br />STATUS: ACTIVE<br />NODE: 0{index + 1}
+              <div className="font-mono text-[8.5px] uppercase tracking-[0.15em] text-black/75 group-hover:text-white/90 dark:text-white/65 sm:text-right font-medium sm:text-[9px]">
+                [{item.label}]<br className="hidden sm:inline" /> STATUS: ACTIVE<br className="hidden sm:inline" /> NODE: 0{index + 1}
               </div>
             </article>
           ))}

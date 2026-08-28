@@ -84,24 +84,41 @@ export default function HudNav({ theme, onToggleTheme }) {
         </div>
       </header>
 
-      <div className={`fixed inset-0 z-40 bg-[#ebe6dc] px-6 pt-28 transition-transform duration-400 dark:bg-[#050505] lg:hidden ${open ? 'translate-y-0' : '-translate-y-full'}`}>
-        <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#ff2a2a] font-semibold">NAVIGATION_NODE</div>
-        <div className="mt-8 flex flex-col border-t border-black/25 dark:border-white/20">
-          {links.map(([label, href], index) => (
-            <a
-              key={label}
-              href={href}
-              onClick={(e) => scrollToHref(e, href)}
-              className="flex items-center justify-between border-b border-black/25 py-5 font-sans text-3xl font-black uppercase tracking-[-0.04em] text-black dark:text-white dark:border-white/20"
-            >
-              {label}
-              <span className="font-mono text-xs font-normal tracking-normal text-[#ff2a2a]">0{index + 1}</span>
-            </a>
-          ))}
+      <div
+        className={`fixed inset-0 z-40 flex flex-col justify-between overflow-y-auto bg-[#ebe6dc] px-6 pt-24 pb-10 transition-transform duration-400 dark:bg-[#050505] lg:hidden ${
+          open ? 'translate-y-0' : '-translate-y-full'
+        }`}
+        style={{
+          paddingTop: 'max(6rem, env(safe-area-inset-top, 0px) + 4.5rem)',
+          paddingBottom: 'max(2.5rem, env(safe-area-inset-bottom, 0px) + 1.5rem)',
+        }}
+      >
+        <div>
+          <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#ff2a2a] font-bold">
+            NAVIGATION_NODE // MENU
+          </div>
+          <div className="mt-6 flex flex-col border-t border-black/25 dark:border-white/20">
+            {links.map(([label, href], index) => (
+              <a
+                key={label}
+                href={href}
+                onClick={(e) => scrollToHref(e, href)}
+                className="flex min-h-[52px] items-center justify-between border-b border-black/25 py-4 font-sans text-2xl font-black uppercase tracking-[-0.04em] text-black dark:text-white dark:border-white/20 sm:text-3xl"
+              >
+                {label}
+                <span className="font-mono text-xs font-normal tracking-normal text-[#ff2a2a]">0{index + 1}</span>
+              </a>
+            ))}
+          </div>
         </div>
-        <div className="mt-8 flex gap-3">
-          <a className="terminal-button" href={profile.linkedin} target="_blank" rel="noreferrer">LINKEDIN</a>
-          <a className="terminal-button" href="/Jalal-Ahmed-Anik-CV.pdf" target="_blank" rel="noreferrer">OPEN CV</a>
+
+        <div className="mt-8 flex flex-wrap gap-3">
+          <a className="terminal-button flex-1 text-center min-h-[44px] flex items-center justify-center" href={profile.linkedin} target="_blank" rel="noreferrer">
+            LINKEDIN
+          </a>
+          <a className="terminal-button flex-1 text-center min-h-[44px] flex items-center justify-center" href="/Jalal-Ahmed-Anik-CV.pdf" target="_blank" rel="noreferrer">
+            OPEN CV
+          </a>
         </div>
       </div>
     </>
