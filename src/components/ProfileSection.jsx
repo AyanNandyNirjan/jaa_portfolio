@@ -32,7 +32,7 @@ export default function ProfileSection() {
         <div className="profile-reveal grid gap-6 border-b border-black/25 pb-6 dark:border-white/20 sm:gap-8 sm:pb-8 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
             <p className="section-kicker">SUBJECT PROFILE // CASE FILE: JAA-06</p>
-            <h2 className="mt-2 sm:mt-3 font-display text-[clamp(3rem,8.5vw,9rem)] font-black uppercase leading-[0.78] tracking-[-0.07em] text-[#0c0c0c] dark:text-[#f3f0e9]">
+            <h2 className="mt-2 sm:mt-3 font-display text-[clamp(3rem,8.5vw,9rem)] font-black uppercase leading-[0.88] tracking-[-0.04em] sm:leading-[0.82] sm:tracking-[-0.055em] md:leading-[0.78] md:tracking-[-0.07em] text-[#0c0c0c] dark:text-[#f3f0e9]">
               Jalal<br />Ahmed Anik
             </h2>
           </div>

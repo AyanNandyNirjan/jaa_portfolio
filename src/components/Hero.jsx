@@ -12,7 +12,7 @@ export default function Hero() {
 
     const ctx = gsap.context(() => {
       gsap.from('.hero-line > span', {
-        yPercent: 110,
+        yPercent: 118,
         stagger: 0.08,
         duration: 1.05,
         ease: 'power4.out',
@@ -79,20 +79,26 @@ export default function Hero() {
             <span className="text-[#ff2a2a] font-bold">REC ●</span>
           </div>
 
-          <div className="relative mx-auto max-w-[1180px] text-center">
-            <p className="hero-hud mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-[#ff2a2a] sm:text-[10px] font-bold">
+          <div className="relative mx-auto max-w-[1180px] text-center px-1">
+            {/* Blurry Red Ambience Glow behind the hero title */}
+            <div
+              className="hero-ambience-glow pointer-events-none h-[280px] w-[320px] sm:h-[400px] sm:w-[560px] md:h-[480px] md:w-[720px] lg:h-[540px] lg:w-[860px] bg-[radial-gradient(ellipse_at_center,rgba(220,25,25,0.48)_0%,rgba(175,18,18,0.28)_36%,rgba(110,10,10,0.08)_60%,transparent_75%)] blur-[40px] sm:blur-[65px] md:blur-[85px] dark:opacity-100 opacity-60"
+              aria-hidden="true"
+            />
+
+            <p className="hero-hud relative z-10 mb-2.5 sm:mb-3 font-mono text-[8.5px] uppercase tracking-[0.2em] text-[#ff2a2a] sm:text-[10px] font-bold">
               TOP SECRET // PROFESSIONAL ARCHIVE
             </p>
-            <h1 className="select-none font-display font-black uppercase leading-[0.74] tracking-[-0.07em] text-[#0c0c0c] dark:text-[#f3f0e9]">
-              <span className="hero-line block overflow-hidden text-[clamp(3.5rem,12vw,12.5rem)]"><span className="block">JALAL</span></span>
-              <span className="hero-line block overflow-hidden text-[clamp(3.5rem,12vw,12.5rem)]"><span className="block">AHMED</span></span>
-              <span className="hero-line block overflow-hidden text-[clamp(3.5rem,12vw,12.5rem)]"><span className="block">ANIK</span></span>
+            <h1 className="relative z-10 select-none font-display font-black uppercase leading-[0.88] tracking-[-0.04em] sm:leading-[0.82] sm:tracking-[-0.055em] md:leading-[0.76] md:tracking-[-0.07em] text-[#0c0c0c] dark:text-[#f3f0e9]">
+              <span className="hero-line block overflow-hidden pb-[0.14em] md:pb-0 text-[clamp(2.75rem,12.5vw,12.5rem)]"><span className="block">JALAL</span></span>
+              <span className="hero-line block overflow-hidden pb-[0.14em] md:pb-0 text-[clamp(2.75rem,12.5vw,12.5rem)]"><span className="block">AHMED</span></span>
+              <span className="hero-line block overflow-hidden pb-[0.14em] md:pb-0 text-[clamp(2.75rem,12.5vw,12.5rem)]"><span className="block">ANIK</span></span>
             </h1>
-            <div className="hero-hud mx-auto mt-6 max-w-2xl sm:mt-8">
-              <p className="font-sans text-sm font-bold uppercase tracking-[-0.02em] sm:text-lg md:text-xl text-[#0c0c0c] dark:text-[#f3f0e9]">
+            <div className="hero-hud relative z-10 mx-auto mt-4 max-w-2xl sm:mt-8">
+              <p className="font-sans text-xs font-bold uppercase tracking-[-0.02em] sm:text-base md:text-xl text-[#0c0c0c] dark:text-[#f3f0e9]">
                 {profile.role}.
               </p>
-              <p className="mt-2 text-xs leading-5 text-black/85 dark:text-white/75 sm:mt-3 sm:text-sm sm:leading-6 md:text-base font-medium">
+              <p className="mt-1.5 text-xs leading-5 text-black/85 dark:text-white/75 sm:mt-3 sm:text-sm sm:leading-6 md:text-base font-medium max-w-xl mx-auto">
                 {profile.intro}
               </p>
             </div>
